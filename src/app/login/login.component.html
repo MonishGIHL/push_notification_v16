@@ -1,0 +1,57 @@
+<!-- 
+<div class="flex h-screen justify-center">
+    <form #usersForm = "ngForm" (ngSubmit)="Login(usersForm.value)" class="p-4 rounded-lg border m-auto shadow-2xl">
+        <h1 class="text-center text-xl mb-5">Push Notification</h1>
+        <img src="{{IHLLogo}}" alt="IHLLogo" style="width: 100px; margin: auto;" >
+        <div class="my-5 w-full">
+            <label for="email">Email</label>
+        <input type="text" id="email" class="p-2 rounded w-full border" placeholder="Enter email"[(ngModel)] = "form.email" name="email" #email = "ngModel" required> 
+        </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="p-1 bg-red-300 text-red-900 rounded">
+            Email Must be Valid
+        </div>
+        <div class="my-5 w-full">
+            <label for="password">Password</label>
+        <input type="password" id="password" class="p-2 rounded w-full border" placeholder="Enter Password" [(ngModel)] = "form.password" name="password" #password = "ngModel" required>
+        </div>
+        <div *ngIf="password.invalid && (password.touched || password.dirty)" class="p-1 bg-red-300 text-red-900 rounded">
+            Password Must be Valid
+        </div>
+        <div class="my-5 w-full">
+        <input type="submit" [disabled]="usersForm.form.invalid || isLoading" class="p-2 w-full bg-blue-700 text-white hover:bg-blue-900">
+        </div>
+        <div *ngIf="showLoader" class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </form>
+</div>-->
+
+
+ 
+<div class="flex h-screen justify-center">
+    <form   class="p-4 rounded-lg border m-auto shadow-2xl">
+        <h1 class="text-center text-xl mb-5">Push Notification</h1>
+        <img src="{{IHLLogo}}" alt="IHLLogo" style="width: 100px; margin: auto;" >
+        <div class="my-5 w-full">
+            <label for="email">Email</label>
+        <input type="text" id="email" class="p-2 rounded w-full border" placeholder="Enter email"[(ngModel)] = "form.email" name="email" #email = "ngModel" required> 
+        </div>
+        <div class="my-5 w-full">
+            <label for="password">Password</label>
+        <input type="password" id="password" class="p-2 rounded w-full border" placeholder="Enter Password" [(ngModel)] = "form.password" name="password" #password = "ngModel" required>
+        </div>
+        <div class="my-5 w-full">
+        <input type="submit" (click)="Login(form)" class="p-2 w-full bg-blue-700 text-white hover:bg-blue-900">
+        </div>
+        <div *ngIf="showLoader" class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+

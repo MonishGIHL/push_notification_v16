@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<div class="w-2/3 ml-5 mt-5">
+
+    <label class="font-medium" for="text">Title({{ title.length }}/{{ titleMaxLength }})*</label><br>
+    <input class="p-2 rounded w-full border" type="text" placeholder="Enter Title" id="titleInput" (input)="updateNewsletterTitleLetterCount()"><br><br>
+
+    <label class="font-medium" for="img">Upload Document * :</label><br>
+    <input type="file" id="img" name="img" accept=".pdf, .doc, .docx, .txt" [(ngModel)]="documentFile"><br><br>
+
+    <!-- <label class="font-medium" for="img">Upload Image * :</label>
+    <div class="container mx-auto">
+      <div class=" flex justify-center">
+          <div class="w-full">
+              <input type="file" (change)="fileChangeEvent($event)"  accept=".jpg, .jpeg, .png" />
+              <p class="text-gray-600 text-sm">Select jpeg,jpg or png format file only</p>
+          </div>
+      </div>
+      <div class="mt-10 flex justify-center">
+          <div class="text-center w-8/12">
+              <image-cropper
+                  [imageChangedEvent]="imageChangedEvent"
+                  [maintainAspectRatio]="true"
+                  [aspectRatio]="1769 / 1250"
+                  [resizeToWidth]="256"
+                  format="png"
+                  (imageCropped)="imageCropped($event)"
+                  (imageLoaded)="imageLoaded()"
+                  (cropperReady)="cropperReady()"
+                  (loadImageFailed)="loadImageFailed()"
+              ></image-cropper>
+          </div>
+          <div class="text-center w-4/12">
+              <img [src]="croppedImage" />
+          </div>
+      </div>
+  </div> -->
+
+  <input type="file" (change)="fileChangeEvent($event)" accept=".jpg, .jpeg, .png"/>
+<p class="text-gray-600 text-sm">Select jpeg,jpg or png format file only</p>
+
+<image-cropper
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="800 / 1300"
+  
+  [format]="format"
+  (imageCropped)="imageCropped($event)"
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+
+<img [src]="croppedImage"/>
+
+    <br><br>
+  <button class="rounded pt-2 pb-2 bg-blue-700 hover:bg-blue-900 w-60 text-white" (click)="publishNewsLetter()">Publish News Letter</button><br><br>
+</div>
+
+<app-footer></app-footer>

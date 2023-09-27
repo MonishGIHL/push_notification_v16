@@ -1,0 +1,114 @@
+<app-header></app-header>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+<div class="w-2/3 ml-5 mt-5">
+
+    <label class="font-medium" for="text">Title({{ title.length }}/{{ titleMaxLength }})*</label><br>
+    <input class="p-2 rounded w-full border" type="text" placeholder="Enter Title" id="titleInput" (input)="updateHEalthTipTitleLetterCount()"><br><br>
+
+    <label class="font-medium" for="text">Message({{ message.length }}/{{ messageMaxLength }})*</label><br>
+    <!-- <input class="class=p-2 rounded w-full border" type="text" placeholder="Enter Message" id="messageTextarea" (input)="updateMessageLetterCount()"><br><br> -->
+    <textarea class="class=p-2 rounded w-full border" rows="5" type="text" placeholder="Enter Message" id="messageTextarea" (input)="updateHealthTipMessageLetterCount()" accept="image/jpg, image/jpeg, image/png"></textarea> <br><br>
+
+
+      <div class="md:flex">
+        <!-- First Column -->
+        <div class="w-full md:w-1/2 pr-0 md:pr-4">
+          <label class="font-medium" for="text">Select Affiliation</label><br>
+          <mat-form-field>
+            <mat-label>Select Affiliations</mat-label>
+            <mat-select [(ngModel)]="SelectedAffiliations" name="SelectedAffiliations" multiple>
+              <mat-option [value]="'all'" (click)="selectAllToggle()">Select All</mat-option>
+              <mat-option *ngFor="let affiliations of organization_name_list" [value]="affiliations">{{affiliations}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      
+        <!-- Second Column -->
+        <div class="w-full md:w-1/2 pl-0 md:pl-4">
+          <label class="font-medium" for="text">Select Recommended List</label><br>
+          <mat-form-field>
+            <mat-label>Select Recommended List</mat-label>
+            <mat-select [(ngModel)]="selectedRecommendedlist" name="selectedRecommendedlist" multiple>
+              <mat-option  *ngFor="let showRecommendations of recommendedlist" [value]="showRecommendations">{{showRecommendations}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <!-- <app-image-cropper [file]="fileBase64" (setImageEvent)="setImg($event)"></app-image-cropper> -->
+
+      <!-- <div class="container">
+        <div class="row" style="margin-top: 5%;">
+            <div class="text-center col-md-12">
+                <input type="file" (change)="fileChangeEvent($event)" />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 5%;">
+            <div class="text-center col-md-8">
+                <h5>Crop Image</h5>
+                <image-cropper 
+                [imageChangedEvent]="imageChangedEvent" 
+                [maintainAspectRatio]="true" 
+                [aspectRatio]="4 / 4"
+                [resizeToWidth]="256" 
+                format="png" 
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()" 
+                (loadImageFailed)="loadImageFailed()"></image-cropper>
+            </div>
+            <div class="text-center col-md-4">
+                <h5>Preview</h5>
+                <img [src]="croppedImage" />
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="container mx-auto">
+      <div class="mt-10 flex justify-center">
+          <div class="w-full">
+              <input type="file" (change)="fileChangeEvent($event)" />
+          </div>
+      </div>
+      <div class="mt-10 flex justify-center">
+          <div class="text-center w-8/12">
+              <image-cropper
+                  [imageChangedEvent]="imageChangedEvent"
+                  [maintainAspectRatio]="true"
+                  [aspectRatio]="800  /1300"
+                  [resizeToWidth]="256"
+                  format="png"
+                  (imageCropped)="imageCropped($event)"
+                  (imageLoaded)="imageLoaded()"
+                  (cropperReady)="cropperReady()"
+                  (loadImageFailed)="loadImageFailed()"
+              ></image-cropper>
+          </div>
+          <div class="text-center w-4/12">
+              <img [src]="croppedImage" />
+          </div>
+      </div>
+  </div> -->
+
+<input type="file" (change)="fileChangeEvent($event)" accept=".jpg, .jpeg, .png"/>
+<p class="text-gray-600 text-sm">Select jpeg,jpg or png format file only</p>
+
+<image-cropper
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="800 / 1300"
+  
+  [format]="format"
+  (imageCropped)="imageCropped($event)"
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+
+<img [src]="croppedImage"/>
+
+<br><br>
+  <button class="rounded pt-2 pb-2 bg-blue-700 hover:bg-blue-900 w-60 text-white" (click)="PublishHealthTip()">Publish Health Tip</button><br><br>
+</div>
+
+<app-footer></app-footer>

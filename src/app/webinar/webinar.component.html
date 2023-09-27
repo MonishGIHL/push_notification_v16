@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div class="w-2/3 ml-5 mt-5">
+
+    <label class="font-medium" for="text">Title({{ title.length }}/{{ titleMaxLength }})*</label><br>
+    <input class="p-2 rounded w-full border" type="text" placeholder="Enter Title" id="titleInput" (input)="updateWebinarTitleLetterCount()"><br><br>
+
+    <label class="font-medium" for="text">Message({{ message.length }}/{{ messageMaxLength }})*</label><br>
+    <!-- <input class="class=p-2 rounded w-full border" type="text" placeholder="Enter Message" id="messageTextarea" (input)="updateMessageLetterCount()"><br><br> -->
+    <textarea class="class=p-2 rounded w-full border" rows="5" type="text" placeholder="Enter Message" id="messageTextarea" (input)="updateWebinarMessageLetterCount()"></textarea> <br><br>
+
+    <label class="font-medium" for="url">Webinar URL *</label><br>
+    <input class="p-2 rounded w-full border" type="url" placeholder="Enter URL" id="urlInput" [(ngModel)]="urlInput" required><br><br>
+    
+    <mat-form-field>
+      <mat-label>Select Affiliation</mat-label>
+      <mat-select [(ngModel)]="SelectedAffiliations" name="SelectedAffiliations" multiple>
+        <mat-option [value]="'all'" (click)="selectAllToggle()">Select All</mat-option>
+        <mat-option *ngFor="let affiliation of organization_name_list" [value]="affiliation">{{affiliation}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br><br>
+
+  <button class="rounded pt-2 pb-2 bg-blue-700 hover:bg-blue-900 w-60 text-white" (click)="publishWebinar()" >Publish Webinar</button><br><br>    
+  
+</div>
+
+<app-footer></app-footer>
